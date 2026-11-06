@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: dastyar-proxy
+    runtime: node
+    rootDir: server
+    plan: free
+    buildCommand: npm install
+    startCommand: node index.js
+    healthCheckPath: /health
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: APP_TOKEN
+        generateValue: true
+      - key: MODEL
+        value: claude-sonnet-5-5
